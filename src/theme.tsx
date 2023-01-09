@@ -17,12 +17,12 @@ const theme = extendTheme({
         _dark: '#ade3b8',
       },
       heroGradientStart: {
-        default: '#7928CA',
-        _dark: '#e3a7f9',
+        default: '#00ffbf',
+        _dark: '#a2dd19',
       },
       heroGradientEnd: {
-        default: '#FF0080',
-        _dark: '#fbec8f',
+        default: '#fa007d',
+        _dark: '#00fff2',
       },
     },
     radii: {
