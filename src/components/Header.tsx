@@ -1,6 +1,6 @@
-import { Avatar, Box, Flex, HStack, Image, Text } from "@chakra-ui/react";
-import Link from "next/link";
-import Logo from "../../public/assets/logo.png";
+import { Avatar, Box, Flex, HStack, Image, Text } from '@chakra-ui/react';
+import Link from 'next/link';
+import Logo from '../../public/assets/logo.png';
 
 function Header() {
   return (
@@ -19,7 +19,7 @@ function Header() {
       </Link>
       <Flex
         cursor="pointer"
-        w="10%"
+        w="15%"
         h="100%"
         alignItems="center"
         justifyContent="space-around"

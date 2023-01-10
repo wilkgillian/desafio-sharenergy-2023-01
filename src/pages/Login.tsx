@@ -1,12 +1,7 @@
-import {
-  Divider,
-  HStack,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
-import React from "react";
-import LoginAnimation from "../Animations/LoginAnimation";
-import Form from "../components/Form";
+import { Divider, HStack, Text, VStack } from '@chakra-ui/react';
+import React from 'react';
+import LoginAnimation from '../Animations/LoginAnimation';
+import Form from '../components/Form';
 
 function Login() {
   return (
@@ -17,6 +12,7 @@ function Login() {
           fontWeight="extrabold"
           bgGradient="linear(to-l, heroGradientStart, heroGradientEnd)"
           bgClip="text"
+          textAlign="center"
         >
           Faça login para acessar a plataforma:
         </Text>

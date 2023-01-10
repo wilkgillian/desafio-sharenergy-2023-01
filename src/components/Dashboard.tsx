@@ -1,19 +1,35 @@
-import { Box, Center, Container, Flex, Text, VStack } from "@chakra-ui/react";
+import { Flex, Text, VStack } from '@chakra-ui/react';
+import { ReactNode } from 'react';
 
-function Dashboard() {
+interface DashboardProps {
+  title: string;
+  children: ReactNode;
+}
+
+function Dashboard({ title, children }: DashboardProps) {
   return (
     <Flex
       w="100%"
       h="100vh"
-      bg="gray.700"
+      bg="gray.800"
       alignItems="center"
       position="relative"
       justifyContent="center"
-      overflowY="scroll"
-      padding="8rem 2rem 0 8rem"
+      padding="6rem 2rem 0 8rem"
     >
-      <VStack width="100%" height="100%" bg="pink.900">
-        <Text>Dashboard</Text>
+      <VStack width="100%" height="100%">
+        <Flex
+          w="100%"
+          h={100}
+          alignItems="center"
+          justifyContent="center"
+          borderRadius={20}
+        >
+          <Text textAlign="center" fontSize={32} fontWeight="bold">
+            {title}
+          </Text>
+        </Flex>
+        {children}
       </VStack>
     </Flex>
   );
