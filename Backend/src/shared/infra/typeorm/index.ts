@@ -1,20 +1,20 @@
-import { DataSource } from "typeorm";
-import { Film } from "../../../modules/films/infra/typeorm/entities/Film";
-import { CreateFilms1669043789353 } from "./migrations/1669043789353-CreateFilms";
+import { DataSource } from 'typeorm';
+import { User } from '../../../modules/users/infra/typeorm/entities/User';
+import { migrations1673379729886 } from './1673379729886-migrations';
 
 const myDataSource = new DataSource({
-  type: "mongodb",
+  type: 'mongodb',
   port: 27017,
-  host: "localhost",
+  host: 'localhost',
   // username: "docker",
   // password: "wilk1998",
-  database: "sharenergydb",
-  entities: [Film],
-  migrations: [CreateFilms1669043789353],
+  database: 'sharenergydb',
+  entities: [User],
+  migrations: [migrations1673379729886]
 });
 
 export async function createConnection(
-  host = "sharenergydb"
+  host = 'sharenergydb'
 ): Promise<DataSource> {
   return await myDataSource.setOptions({ host }).initialize();
 }

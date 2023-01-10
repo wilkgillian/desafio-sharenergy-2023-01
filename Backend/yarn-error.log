@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\wilk.silva\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add polyfill
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add mongodb
 
 PATH: 
-  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\SafeNet\Authentication\SAC\x64;C:\Program Files\SafeNet\Authentication\SAC\x32;C:\Program Files\nodejs\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\wilk.silva\AppData\Local\Microsoft\WindowsApps;C:\Users\wilk.silva\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\wilk.silva\AppData\Local\Programs\Git\cmd;C:\Users\wilk.silva\AppData\Roaming\npm;C:\Users\wilk.silva\.deta\bin
+  C:\Python310\Scripts\;C:\Python310\;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\OpenJDK\openjdk-11.0.15_10\bin;C:\Android\Sdk\emulator;C:\Android\Sdk\tools;C:\Android\Sdk\tools\bin;C:\Android\Sdk\platform-tools;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\ProgramData\ComposerSetup\bin;C:\xampp\php;C:\Program Files\Docker\Docker\resources\bin;C:\Users\wilkw\AppData\Local\Microsoft\WindowsApps;C:\Users\wilkw\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\wilkw\AppData\Roaming\npm;C:\Users\wilkw\AppData\Local\Yarn\bin;C:\Users\wilkw\AppData\Roaming\Composer\vendor\bin;
 
 Yarn version: 
   1.22.19
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\Users\wilk.silva\Documents\filimo\server\node_modules\.bin\ts-node-dev'
+  Error: EPERM: operation not permitted, unlink 'C:\Users\wilkw\Documents\sharenergy\backend\node_modules\.bin\ts-node-dev'
 
 npm manifest: 
   {
@@ -27,13 +27,14 @@ npm manifest:
       "typescript": "^4.9.3"
     },
     "scripts": {
-      "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
+      "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
       "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-      "migration-create": "typeorm-ts-node-commonjs migration:create ./src/database/migrations/",
-      "migration-run": "typeorm-ts-node-commonjs migration:run -d ./src/database/index.ts"
+      "migration-create": "typeorm-ts-node-commonjs migration:create ./src/shared/infra/typeorm/migrations/",
+      "migration-run": "ts-node-dev ./node_modules/typeorm/cli.js migration:run -d ./src/shared/infra/typeorm/index.ts"
     },
     "dependencies": {
       "@types/aws-sdk": "^2.7.0",
+      "@types/cors": "^2.8.12",
       "@types/express": "^4.17.14",
       "@types/mime": "^3.0.1",
       "@types/multer": "^1.4.7",
@@ -41,12 +42,14 @@ npm manifest:
       "@types/uuid": "^8.3.4",
       "aws-sdk": "^2.1258.0",
       "axios": "^1.1.3",
+      "cors": "^2.8.5",
       "dotenv": "^16.0.3",
       "express": "^4.18.2",
       "mime": "^3.0.0",
       "multer": "^1.4.5-lts.1",
       "nodejs-image-parser": "^1.0.2",
       "pg": "^8.8.0",
+      "polyfill": "^0.1.0",
       "reflect-metadata": "^0.1.13",
       "swagger-ui-express": "^4.6.0",
       "tsyringe": "^4.7.0",
@@ -412,6 +415,11 @@ Lockfile:
     integrity sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==
     dependencies:
       "@types/node" "*"
+  
+  "@types/cors@^2.8.12":
+    version "2.8.12"
+    resolved "https://registry.yarnpkg.com/@types/cors/-/cors-2.8.12.tgz#6b2c510a7ad7039e98e7b8d3d6598f4359e5c080"
+    integrity sha512-vt+kDhq/M2ayberEtJcIN/hxXy1Pk+59g2FV/ZQceeaTyCtCucjL2Q7FXlFjtWn4n15KCr1NE2lNNFhp0lEThw==
   
   "@types/express-serve-static-core@^4.17.18":
     version "4.17.31"
@@ -1171,6 +1179,14 @@ Lockfile:
     version "1.0.3"
     resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.3.tgz#a6042d3634c2b27e9328f837b965fac83808db85"
     integrity sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==
+  
+  cors@^2.8.5:
+    version "2.8.5"
+    resolved "https://registry.yarnpkg.com/cors/-/cors-2.8.5.tgz#eac11da51592dd86b9f06f6e7ac293b3df875d29"
+    integrity sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==
+    dependencies:
+      object-assign "^4"
+      vary "^1"
   
   create-require@^1.1.0:
     version "1.1.1"
@@ -2430,6 +2446,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/json-buffer/-/json-buffer-3.0.0.tgz#5b1f397afc75d677bde8bcfc0e47e1f9a3d9a898"
     integrity sha512-CuUqjv0FUZIdXkHPI8MezCnFCdaTAacej1TZYulLoAg1h/PhwkdXFN4V/gzY4g+fMBCOV2xF+rp7t2XD2ns/NQ==
   
+  json3@3.2.4:
+    version "3.2.4"
+    resolved "https://registry.yarnpkg.com/json3/-/json3-3.2.4.tgz#689c589e7ca9340c7ee4949e0d105bc5bf159f21"
+    integrity sha512-F2R+w8lYbeme21HBvmfTXK3ogopKze5Abjb0cF5mEsZ4KJmDwzR6oO8XsUrrBP0yzpqBRYImh32ci6JKFrte7Q==
+  
   keyv@3.0.0:
     version "3.0.0"
     resolved "https://registry.yarnpkg.com/keyv/-/keyv-3.0.0.tgz#44923ba39e68b12a7cec7df6c3268c031f2ef373"
@@ -2829,7 +2850,7 @@ Lockfile:
     dependencies:
       path-key "^2.0.0"
   
-  object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
+  object-assign@^4, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
     version "4.1.1"
     resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
     integrity sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==
@@ -3204,6 +3225,13 @@ Lockfile:
       bin-wrapper "^4.0.1"
       execa "^0.10.0"
       logalot "^2.0.0"
+  
+  polyfill@^0.1.0:
+    version "0.1.0"
+    resolved "https://registry.yarnpkg.com/polyfill/-/polyfill-0.1.0.tgz#ded507cb76802804834b3385dfd3ba2e51004c3d"
+    integrity sha512-EL2FdBj6IBG41Fxd4IoEX3fCDKccLmtlYMS5cCUR4k/rmrc0vRSLLqbgWIy7OQi2oQfNxipQYCckiebomiohyg==
+    dependencies:
+      json3 "3.2.4"
   
   posix-character-classes@^0.1.0:
     version "0.1.1"
@@ -4244,7 +4272,7 @@ Lockfile:
       spdx-correct "^3.0.0"
       spdx-expression-parse "^3.0.0"
   
-  vary@~1.1.2:
+  vary@^1, vary@~1.1.2:
     version "1.1.2"
     resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
     integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==

@@ -1,8 +1,8 @@
 import { container } from 'tsyringe';
-import { FilmRepository } from '../../modules/films/infra/typeorm/repositories/FilmsRepository';
-import { IFilmsRepository } from '../../modules/films/repositories/IFilmsRepository';
+import { UserRepository } from '../../modules/users/infra/typeorm/repositories/UsersRepository';
+import { IUsersRepository } from '../../modules/users/repositories/IUsersRepository';
 
-container.registerSingleton<IFilmsRepository>(
-  'FilmsRepository',
-  FilmRepository
+container.registerSingleton<IUsersRepository>(
+  'UsersRepository',
+  UserRepository
 );
