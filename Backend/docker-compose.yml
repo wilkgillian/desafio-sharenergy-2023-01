@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  mongo:
+    image: mongo
+    container_name: sharenergydb
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      # - MONGO_USER=docker
+      # - MONGO_PASSWORD=wilk1998
+      - MONGO_DB=sharenergydb
+    volumes:
+      - pgdata:/data/mongo
+    # network_mode: host
+  # mongo-express:
+  # app:
+  #   build: .
+  #   container_name: sharenergy
+  #   ports:
+  #     - 3333:3333
+  #   volumes:
+  #     - .:/usr/app
+    # network_mode: host
+
+volumes:
+  pgdata:
+    driver: local
