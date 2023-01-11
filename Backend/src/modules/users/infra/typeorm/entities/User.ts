@@ -1,10 +1,11 @@
-import { v4 as uuidV4 } from 'uuid';
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
+import { v4 as uuidV4 } from "uuid";
+import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
+import { ObjectId } from "mongodb";
 
-@Entity('users')
+@Entity("users")
 export class User {
   @PrimaryColumn()
-  id: string;
+  id: ObjectId;
 
   @Column()
   name: string;
@@ -38,7 +39,7 @@ export class User {
 
   constructor() {
     if (!this.id) {
-      this.id = uuidV4();
+      this.id = new ObjectId();
     }
   }
 }

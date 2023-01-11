@@ -11,11 +11,11 @@ export class UpdateUserImageController {
 
     const image_url = await uploadImageOnS3(req);
 
-    const film = await updateUserImageUseCase.execute({
+    const user = await updateUserImageUseCase.execute({
       id: id,
       image: image_url
     });
 
-    return res.status(201).json(film);
+    return res.status(201).json(user);
   }
 }

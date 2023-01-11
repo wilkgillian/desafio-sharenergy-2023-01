@@ -22,8 +22,8 @@ export class CreateUserUseCase {
     address,
     cpf
   }: ICreateUserDTO): Promise<User> {
-    const filmAlreadyExists = await this.repository.findByUsername(username);
-    if (filmAlreadyExists) {
+    const userAlreadyExists = await this.repository.findByUsername(username);
+    if (userAlreadyExists) {
       throw new Error('Usuário já existe');
     }
 
