@@ -1,104 +1,63 @@
-import { Box, Grid, GridItem } from '@chakra-ui/react';
-import React from 'react';
-import CardUser from './CardUser';
-import Pagination from './Pagination';
+import { Box, Grid, GridItem, Spinner } from "@chakra-ui/react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addUser, useUser } from "../redux/sliceUsers";
+import CardUser from "./CardUser";
+import Pagination from "./Pagination";
 
 function UsersList() {
-  const fakeUsers = [
-    {
-      name: 'Wilk Gillian',
-      email: 'foo@example.com',
-      username: '@wilk1998',
-      age: 22
-    },
-    {
-      name: 'Wilk Gillian',
-      email: 'foo@example.com',
-      username: '@wilk1995',
-      age: 22
-    },
-    {
-      name: 'Wilk Gillian',
-      email: 'foo@example.com',
-      username: '@wilk1994',
-      age: 22
-    },
-    {
-      name: 'Wilk Gillian',
-      email: 'foo@example.com',
-      username: '@wilk1993',
-      age: 22
-    },
-    {
-      name: 'Wilk Gillian',
-      email: 'foo@example.com',
-      username: '@wilk1991',
-      age: 22
-    },
-    {
-      name: 'Wilk Gillian',
-      email: 'foo@example.com',
-      username: '@wilk1990',
-      age: 22
-    },
-    {
-      name: 'Wilk Gillian',
-      email: 'foo@example.com',
-      username: '@wilk1996',
-      age: 22
-    },
-    {
-      name: 'Wilk Gillian',
-      email: 'foo@example.com',
-      username: '@wilk1993',
-      age: 22
-    },
-    {
-      name: 'Wilk Gillian',
-      email: 'foo@example.com',
-      username: '@wilk1992',
-      age: 22
-    },
-    {
-      name: 'Wilk Gillian',
-      email: 'foo@example.com',
-      username: '@wilk19900',
-      age: 22
-    },
-    {
-      name: 'Wilk Gillian',
-      email: 'foo@example.com',
-      username: '@wilk19981',
-      age: 22
-    },
-    {
-      name: 'Wilk Gillian',
-      email: 'foo@example.com',
-      username: '@wilk1955',
-      age: 22
-    },
-    {
-      name: 'Wilk Gillian',
-      email: 'foo@example.com',
-      username: '@wilk19222',
-      age: 22
-    },
-    {
-      name: 'Wilk Gillian',
-      email: 'foo@example.com',
-      username: '@wilk191111',
-      age: 22
-    },
-    {
-      name: 'Wilk Gillian',
-      email: 'foo@example.com',
-      username: '@wilk19331',
-      age: 22
+  const userInfos = useSelector(useUser);
+  const dispatch = useDispatch();
+
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [fakeUsers, setFakeUsers] = useState([]);
+
+  useEffect(() => {
+    async function getUsers() {
+      const { data } = await axios.get(
+        "https://randomuser.me/api/?results=500"
+      );
+      localStorage.setItem("users", JSON.stringify(data.results));
     }
-  ];
+    getUsers();
+    setLoading(false);
+  }, []);
+
+  function loadUsers() {
+    const users = JSON.parse(localStorage.getItem("users"));
+    // console.log(JSON.parse(users))
+    setFakeUsers(users);
+  }
+  loadUsers();
+  const users = fakeUsers.map((user) => {
+    return {
+      firstName: user.name.first,
+      lastName: user.name.last,
+      email: user.email,
+      image: user.picture.thumbnail,
+      age: user.registered.age,
+      username: user.login.username,
+    };
+  });
+
+  // localStorage.setItem("users", JSON.stringify(fakeUsers));
+  // function addUsersToLocalStorage() {
+  //   const user = users[0]
+  //     dispatch(addUser({ name: user.firstName }));
+  // }
+  // addUsersToLocalStorage();
+  // const data = localStorage.getItem('users')
+  // setFakeUsers(data.results);
+  console.log(users);
   return (
-    <Box overflowY="hidden">
-      <Pagination />
+    <Box overflowY="hidden" w="90%">
+      <Pagination
+        totalCountRegisters={fakeUsers.length}
+        currentPage={page}
+        onPageChange={setPage}
+      />
       <Grid
         w="full"
         templateColumns="repeat(3, 1fr)"
@@ -108,16 +67,26 @@ function UsersList() {
         bg="gray.800"
         padding="3rem"
       >
-        {fakeUsers.map(user => (
-          <GridItem key={user.username}>
-            <CardUser
-              name={user.name}
-              email={user.email}
-              username={user.username}
-              age={user.age}
-            />
-          </GridItem>
-        ))}
+        {/* {loading ? (
+          <Box w="full" h="full" bg="gray.100">
+            <Spinner />
+          </Box>
+        ) : (
+          <>
+            {users.map((user) => (
+              <GridItem key={user.username}>
+                <CardUser
+                  image={user.image}
+                  firstname={user.firstName}
+                  lastname={user.lastName}
+                  email={user.email}
+                  username={user.username}
+                  age={user.age}
+                />
+              </GridItem>
+            ))}
+          </>
+        )} */}
       </Grid>
     </Box>
   );

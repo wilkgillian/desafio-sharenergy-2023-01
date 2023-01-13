@@ -2,6 +2,7 @@ import { Flex, FlexProps } from '@chakra-ui/react'
 
 export const Container = (props: FlexProps) => (
   <Flex
+  w="100%"
     direction="column"
     justifyContent="flex-start"
     bg="gray.50"

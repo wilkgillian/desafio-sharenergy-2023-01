@@ -4,6 +4,8 @@ import NextNProgress from "nextjs-progressbar";
 import theme from "../theme";
 import { AppProps } from "next/app";
 import { useEffect, useState } from "react";
+import { Provider } from "react-redux";
+import store from "../redux/store";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [showChild, setShowChild] = useState(false);
@@ -27,7 +29,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           height={5}
           showOnShallow
         />
-        <Component {...pageProps} />
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
       </ChakraProvider>
     );
   }

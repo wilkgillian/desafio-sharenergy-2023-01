@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 import { IUpdateUserDTO } from '../../dtos/IUpdateUserDTO';
-import { User } from '../../infra/typeorm/entities/User';
+import { User } from '../../infra/entities/User';
 import { IUsersRepository } from '../../repositories/IUsersRepository';
 
 @injectable()

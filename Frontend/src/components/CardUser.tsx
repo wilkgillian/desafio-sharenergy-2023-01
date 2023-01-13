@@ -5,25 +5,34 @@ import {
   HStack,
   Icon,
   Text,
-  VStack
-} from '@chakra-ui/react';
-import { MdEmail } from 'react-icons/md';
-import { HiUserCircle } from 'react-icons/hi';
-import Link from 'next/link';
+  VStack,
+} from "@chakra-ui/react";
+import { MdEmail } from "react-icons/md";
+import { HiUserCircle } from "react-icons/hi";
+import Link from "next/link";
 
 interface UserProps {
-  name: string;
+  firstname: string;
+  lastname: string;
   email: string;
   username: string;
   age: number;
+  image: string;
 }
 
-function CardUser({ name, email, username, age }: UserProps) {
+function CardUser({
+  firstname,
+  lastname,
+  email,
+  username,
+  age,
+  image,
+}: UserProps) {
   return (
     <HStack borderRadius={20} bg="gray.700" padding={5}>
       <Avatar
         border="2px solid gray"
-        src="https://github.com/wilkgillian.png"
+        src={image}
         h={20}
         w={20}
         boxShadow="dark-lg"
@@ -31,7 +40,7 @@ function CardUser({ name, email, username, age }: UserProps) {
       <VStack w="full">
         <Link href="/user" passHref>
           <Text fontSize={24} fontWeight="bold">
-            {name}, {age}
+            {firstname} {lastname}, {age}
           </Text>
         </Link>
         <Box>

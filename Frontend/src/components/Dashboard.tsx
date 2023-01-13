@@ -1,5 +1,5 @@
-import { Flex, Text, VStack } from '@chakra-ui/react';
-import { ReactNode } from 'react';
+import { Flex, Text, VStack } from "@chakra-ui/react";
+import { ReactNode } from "react";
 
 interface DashboardProps {
   title: string;
@@ -15,7 +15,7 @@ function Dashboard({ title, children }: DashboardProps) {
       alignItems="center"
       position="relative"
       justifyContent="center"
-      padding="6rem 2rem 0 8rem"
+      padding="6rem 2rem 2rem 8rem"
     >
       <VStack width="100%" height="100%">
         <Flex

@@ -1,4 +1,4 @@
-import { User } from '../../infra/typeorm/entities/User';
+import { User } from '../../infra/entities/User';
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import { GetOneUserUseCase } from './GetOneUserUseCase';
