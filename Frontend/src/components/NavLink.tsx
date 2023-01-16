@@ -21,6 +21,7 @@ function NavLink({ icon, link, title }: NavLinkProps) {
         _hover={{
           color: "cyan",
         }}
+        color="gray.200"
       >
         <Icon as={icon} fontSize={32} />
         <Text as="span" ml={4} fontSize={14} fontWeight="bold" textTransform="uppercase">

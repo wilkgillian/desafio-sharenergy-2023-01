@@ -1,6 +1,8 @@
-import { Avatar, Box, Flex, HStack, Image, Text } from '@chakra-ui/react';
-import Link from 'next/link';
-import Logo from '../../public/assets/logo.png';
+import { Avatar, Box, Flex, HStack, Icon, Image, Text } from "@chakra-ui/react";
+import { IoIosArrowDown } from "react-icons/io";
+import Link from "next/link";
+import Logo from "../../public/assets/logo.png";
+import UserProfileModal from "./UserProfileModal";
 
 function Header() {
   return (
@@ -26,9 +28,14 @@ function Header() {
         bg="gray.700"
         borderRadius={20}
         padding={2}
+        color="gray.200"
       >
         <Avatar h={10} w={10} src="http://github.com/wilkgillian.png" />
-        <Text fontSize="lg">Wilk Gillian</Text>
+        <Text fontSize="lg" fontWeight="bold">
+          Wilk Gillian
+        </Text>
+        <UserProfileModal />
+        {/* <Icon as={IoIosArrowDown} fontSize="28" /> */}
       </Flex>
     </HStack>
   );

@@ -6,6 +6,7 @@ import { AppProps } from "next/app";
 import { useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import store from "../redux/store";
+import { UsersContextProvider } from "../contexts/UsersContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [showChild, setShowChild] = useState(false);
@@ -23,15 +24,17 @@ function MyApp({ Component, pageProps }: AppProps) {
     return (
       <ChakraProvider theme={theme}>
         <NextNProgress
-          color="#4b00ad"
+          color="#00fff2"
           startPosition={0.3}
           stopDelayMs={200}
           height={5}
           showOnShallow
         />
-        <Provider store={store}>
-          <Component {...pageProps} />
-        </Provider>
+        <UsersContextProvider>
+          <Provider store={store}>
+            <Component {...pageProps} />
+          </Provider>
+        </UsersContextProvider>
       </ChakraProvider>
     );
   }

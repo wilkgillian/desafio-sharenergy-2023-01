@@ -42,6 +42,15 @@ function Pagination({
   return (
     <Box w="full" mb={5}>
       <Center gap={2}>
+        <Button
+          size="sm"
+          bgColor="teal.200"
+          _hover={{
+            bgColor: "teal.500",
+          }}
+        >
+          <Icon as={HiOutlineChevronLeft} />
+        </Button>
         {currentPage > 1 + siblingCount && (
           <>
             <PaginationItem onPageChange={onPageChange} number={1} />
@@ -88,15 +97,15 @@ function Pagination({
           </>
         )}
 
-        {/* <Button>
-          <Icon as={HiOutlineChevronLeft} />
-        </Button>
-        <Button>2</Button>
-        <Button>...</Button>
-        <Button>4</Button>
-        <Button>
+        <Button
+          size="sm"
+          bgColor="teal.200"
+          _hover={{
+            bgColor: "teal.500",
+          }}
+        >
           <Icon as={HiOutlineChevronRight} />
-        </Button> */}
+        </Button>
       </Center>
     </Box>
   );
